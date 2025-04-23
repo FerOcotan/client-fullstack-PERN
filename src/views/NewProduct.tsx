@@ -1,6 +1,6 @@
 import { Link, Form, useActionData, ActionFunctionArgs } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
-
+import { addProduct } from "../services/ProductService";
 
 
 
@@ -19,6 +19,8 @@ export async function action({request} : ActionFunctionArgs) {
             return error
         }
         // Enviar a la API
+
+        const res = await addProduct(data)
 
         return {}
 }
