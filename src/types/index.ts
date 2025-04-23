@@ -11,5 +11,6 @@ export const ProductSchema = object({
     price: number(),
     availability: boolean()
 })
+
 export const ProductsSchema = array(ProductSchema)
 export type Product = Output<typeof ProductSchema>

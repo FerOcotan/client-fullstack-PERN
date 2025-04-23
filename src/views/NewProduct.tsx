@@ -1,11 +1,10 @@
-import { Link, Form, useActionData, ActionFunctionArgs } from "react-router-dom";
+import { Link, Form, useActionData, ActionFunctionArgs, redirect } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 import { addProduct } from "../services/ProductService";
 
 
 
 export async function action({request} : ActionFunctionArgs) {
-
         const data = Object.fromEntries(await request.formData())
         
         let error =''
@@ -20,9 +19,9 @@ export async function action({request} : ActionFunctionArgs) {
         }
         // Enviar a la API
 
-        const res = await addProduct(data)
+       await addProduct(data)
 
-        return {}
+        return redirect ('/')
 }
 
 

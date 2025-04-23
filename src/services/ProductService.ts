@@ -1,6 +1,7 @@
 import { safeParse } from "valibot"
-import { DraftProductSchema } from "../types"
+import { DraftProductSchema,ProductSchema } from "../types"
 import axios from "axios"
+
 
 
 
@@ -20,7 +21,7 @@ export async function addProduct(data: ProductData) {
         })
         if(result.success) {
            const url = `${import.meta.env.VITE_API_URL}/api/products`
-           const {data} = await axios.post(url, {
+             await axios.post(url, {
             name: result.output.name,
             price: result.output.price,
            })
@@ -37,3 +38,19 @@ export async function addProduct(data: ProductData) {
 
 
 }
+
+export async function getProducts() {   
+    try {
+        const url = `${import.meta.env.VITE_API_URL}/api/products`
+        const { data } = await axios.get(url)
+        const result = safeParse(ProductSchema, data.data)
+        if (result.success) {
+            return result.output
+        }
+        throw new Error("Error de validación")
+    }
+    catch (error) {
+        console.log(error)
+    }
+}       
+      
