@@ -1,6 +1,10 @@
 
-import { Link,useLoaderData } from "react-router-dom"
+import { ActionFunctionArgs, Link,useLoaderData } from "react-router-dom"
 import { getProducts } from "../services/ProductService"
+import ProductDetails from "../components/ProductDetails"
+import { Product } from "../types"
+
+
 
 export async function loader() {
 
@@ -9,11 +13,18 @@ export async function loader() {
   return products
 }
 
+export async function action({request} : ActionFunctionArgs) {
+  const data = Object.fromEntries(await request.formData())
+  await updateProductAvailability(+data.id)
+  return {}
+}
+
+
 
 export default function Products() {
 
 
-  const products = useLoaderData() as any
+  const products = useLoaderData() as Product[]
 
 
   return (
@@ -38,6 +49,15 @@ export default function Products() {
     </thead>
     <tbody>
 
+    {products.map(product => (
+     
+     <ProductDetails
+     key={product.id}
+      product={product}
+     />
+          ))}
+
+
     </tbody>
   </table>
 </div>
@@ -46,3 +66,7 @@ export default function Products() {
     </>
   )
 }
+function updateProductAvailability(arg0: number) {
+  throw new Error("Function not implemented.")
+}
+
