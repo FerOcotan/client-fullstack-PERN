@@ -28,19 +28,7 @@ export default function ProductDetails({product} : ProductDetailsProps) {
             <td className="p-3 text-lg text-gray-800">
                 { formatCurrency(product.price) }
             </td>
-            <td className="p-3 text-lg text-gray-800">
-                <fetcher.Form method='POST'>
-                    <button
-                        type='submit'
-                        name='id'
-                        value={product.id}
-                        className={`${isAvailable ? 'text-black' : 'text-red-600'} rounded-lg p-2 text-xs uppercase font-bold w-full border border-black-100 hover:cursor-pointer`}
-                    >
-                        {isAvailable ? 'Disponible' : 'No Disponible'}
-                    </button>
-                </fetcher.Form>
-                
-            </td>
+           
             <td className="p-3 text-lg text-gray-800 ">
                 <div className="flex gap-2 items-center">
                     <button
