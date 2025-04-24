@@ -20,34 +20,34 @@ export default function Products() {
 
   return (
     <>
-      <div className="flex justify-between mb-10">
-        <h2 className="text-4xl font-bold text-slate-500">Productos</h2>
+  <div className="flex justify-between items-center mb-10">
+  <h2 className="text-4xl font-bold text-slate-700">Productos</h2>
 
-        <Link
-          to="/productos/nuevo"
-          className="bg-lime-800 text-white px-4 py-3 rounded-md uppercase font-bold text-sm"
-        >
-          Nuevo producto
-        </Link>
-      </div>
+  <Link
+    to="/productos/nuevo"
+    className="bg-lime-700 hover:bg-lime-600 transition-colors text-white px-5 py-3 rounded-lg uppercase font-semibold text-sm shadow-md"
+  >
+    Nuevo producto
+  </Link>
+</div>
 
-      <div className="p-2">
-        <table className="w-full mt-5 table-auto">
-          <thead className="bg-slate-800 text-white">
-            <tr>
-              <th className="p-2">Producto</th>
-              <th className="p-2">Precio</th>
-  
-              <th className="p-2">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <ProductDetails key={product.id} product={product} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+<div className="overflow-x-auto shadow-md rounded-lg">
+  <table className="w-full mt-5 table-auto border-collapse">
+    <thead className="bg-lime-700 text-white">
+      <tr>
+        <th className="p-4 text-left">Producto</th>
+        <th className="p-4 text-left">Precio</th>
+        <th className="p-4 text-left">Acciones</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-lime-50 divide-gray-200 bg-white">
+      {products.map((product) => (
+        <ProductDetails key={product.id} product={product} />
+      ))}
+    </tbody>
+  </table>
+</div>
+
     </>
   );
 }
