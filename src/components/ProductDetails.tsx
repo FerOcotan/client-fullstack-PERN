@@ -1,4 +1,4 @@
-import { useNavigate, Form, ActionFunctionArgs, redirect, useFetcher } from 'react-router-dom'
+import { useNavigate, Form, ActionFunctionArgs, redirect } from 'react-router-dom'
 import { Product } from "../types"
 import { formatCurrency } from "../utils"
 import { deleteProduct } from '../services/ProductService'
@@ -16,9 +16,9 @@ export async function action({params} : ActionFunctionArgs) {
 
 export default function ProductDetails({product} : ProductDetailsProps) {
 
-    const fetcher = useFetcher()
+    
     const navigate = useNavigate()
-    const isAvailable = product.availability
+    
 
     return (
         <tr className="border-b ">
